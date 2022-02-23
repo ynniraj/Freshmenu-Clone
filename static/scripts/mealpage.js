@@ -7,16 +7,14 @@ async function details() {
 
     let mealId = localStorage.getItem("mealId");
 
-    //mealId = JSON.parse(mealId);
 
-    let response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
+    let response = await fetch(`http://localhost:8888/products/${mealId}`);
 
     let data = await response.json();
-    let data_meal = data.meals;
 
-    console.log("data", data_meal);
+    console.log("data", data);
 
-    appendMeal(data_meal);
+    appendMeal(data);
 
 
     let response_random = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=salt`);
@@ -35,22 +33,8 @@ details();
 
 let appendMeal = ((data) => {
 
-    data.forEach((data) => {
-        let { strArea } = data;
-        let { strCategory } = data;
-        let { strMealThumb } = data;
-
-        let { strIngredient1 } = data;
-        let { strIngredient2 } = data;
-        let { strIngredient3 } = data;
-        let { strIngredient4 } = data;
-        let { strIngredient5 } = data;
-        let { strIngredient6 } = data;
-        let { strIngredient7 } = data;
-        let { strIngredient8 } = data;
-
-        let { strMeal } = data;
-        console.log(strMeal);
+    data.forEach(({ strMeal, strMealThumb}) => {
+      
 
         let meal_details = document.getElementById("meal_details");
 

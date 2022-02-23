@@ -47,7 +47,7 @@ async function categoryData() {
         let response_rice = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=rice`);
         let response_noodles = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=noodle`);
         let response_pasta = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=pasta`);
-        let response_biriyani = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=rice`);
+        let response_biriyani = await fetch(`http://localhost:8888/category/rice`);
         let response_salad = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=salad`);
         let response_keto = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken`);
         let response_burger = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=burger`);
@@ -67,6 +67,7 @@ async function categoryData() {
         let data_noodle = await response_noodles.json();
         let data_pasta = await response_pasta.json();
         let data_biriyani = await response_biriyani.json();
+        let main = data_biriyani[0].product_id
         let data_fit = await response_salad.json();
         let data_keto = await response_keto.json();
         let data_burger = await response_burger.json();
@@ -80,7 +81,7 @@ async function categoryData() {
         console.log("data_rice", data_rice);
         console.log("data_noodle", data_noodle);
         console.log("data_pasta", data_pasta);
-        console.log("data_biriyani", data_biriyani);
+        console.log("data_biriyani", main);
         console.log("data_fit", data_fit);
         console.log("data_keto", data_keto);
         console.log("data_burger", data_burger);
@@ -95,7 +96,7 @@ async function categoryData() {
         appendRice(data_rice);
         appendNoodle(data_noodle);
         appendPasta(data_pasta);
-        appendBiriyani(data_biriyani);
+        appendBiriyani(main);
         appendFit(data_fit);
         appendKeto(data_keto);
         appendBurger(data_burger);
@@ -361,16 +362,9 @@ const appendPasta = (data_1) => {
 
 let biriyani = document.getElementById('biriyani');
 
-const appendBiriyani = (data_1) => {
+function appendBiriyani(main) {
 
-    let { meals } = data_1;
-
-    let i = 90;
-
-    meals.forEach((elem) => {
-
-        let { strMeal } = elem;
-        let { strMealThumb } = elem;
+    main.forEach(({ strMeal, strMealThumb, price, idMeal }) => {
 
         let main_div = document.createElement('div');
         main_div.setAttribute('id', "maindiv");
@@ -394,8 +388,7 @@ const appendBiriyani = (data_1) => {
         img.src = strMealThumb;
         sub_div1.innerHTML = strMeal;
 
-        sub_div2_div1.innerHTML = "₹" + " " + i;
-        i = i + 50;
+        sub_div2_div1.innerHTML = "₹" + " " + price;
         sub_div2_div2.innerHTML = "Add";
         sub_div2_div2.addEventListener("click", function () {
             sideCart(({ strMeal, strMealThumb }))
@@ -408,7 +401,6 @@ const appendBiriyani = (data_1) => {
 
         img.addEventListener("click", () => {
 
-            let { idMeal } = elem;
             //strMealId = JSON.stringify(strMealId);
 
             localStorage.setItem("mealId", idMeal);
@@ -1053,10 +1045,9 @@ async function alsolike() {
 
 
         let res = await fetch(
-            `https://www.themealdb.com/api/json/v1/1/filter.php?a=American`
-        );
+            " http://localhost:8888/category");
         let data = await res.json();
-        let meal = data.meals;
+        let meal = data[0].product_id;
         appendLike(meal)
         console.log("also", meal);
     } catch (err) {

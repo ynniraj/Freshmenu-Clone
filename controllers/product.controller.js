@@ -23,4 +23,14 @@ router.get("", async (req, res) => {
     }
 })
 
+
+router.get("/:idMeal", async (req, res) => {
+    try {
+        const product = await Product.find({ idMeal: req.params.idMeal }).lean().exec()
+        return res.status(200).send(product);
+    } catch (err) {
+        return res.status(500).send(err)
+    }
+})
+
 module.exports = router

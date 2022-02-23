@@ -72,11 +72,12 @@
     //mealId = JSON.parse(mealId);
 
     try {
-      let response = await fetch("http://localhost:8888/products");
+      let response = await fetch("http://localhost:8888/category");
 
       let data = await response.json();
-
+      let main = data[0].product_id;
       console.log("data", data);
+      console.log("data", main);
     } catch (err) {
       console.log("error", err);
     }

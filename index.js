@@ -7,9 +7,11 @@ app.use(express.json());
 
 const userController = require('./controllers/user.controller')
 const productController = require('./controllers/product.controller')
+const cataController = require('./controllers/category.controller')
 
 app.use("", userController)
 app.use("/products", productController)
+app.use("/category", cataController)
 
 
 app.listen(8888, async () => {
