@@ -1,12 +1,13 @@
+const EventEmitter = require("events");
 const express = require("express");
 const path = require("path");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const router = express.Router();
 const User = require("../models/user.model");
 const { welcomeMail } = require("../utils");
-const EventEmitter = require("events");
-const eventemitter = new EventEmitter();
+
+const router = express.Router();
+const eventEmitter = new EventEmitter();
 
 const JWT_SECRET_KEY = "dsjhakjshdfhugchv$$#$%#sbavnb";
 
@@ -19,23 +20,17 @@ router.post("/api/register", async (req, res) => {
 
 	const password = await bcrypt.hash(plaintextpassword, 10);
 	try {
-		const user = await User.create({
-			name,
-			username,
-			email,
-			password,
-			mobile
-		});
+		const user = await User.create({ name, username, email, password, mobile });
 
-		eventemitter.on("User Registered", welcomeMail);
+		eventEmitter.on("User Registered", welcomeMail);
 
-		eventemitter.emit("User Registered", {
+		eventEmitter.emit("User Registered", {
 			from : "admin@masai.com",
-			to   : "abcd@xyz.com",
-			user : user
+			to   : user.email,
+			user
 		});
 
-		return res.status(200).send(user);
+		return res.status(200).send({ user, status: "ok" });
 	} catch (error) {
 		return res.json({ status: "error" });
 	}
