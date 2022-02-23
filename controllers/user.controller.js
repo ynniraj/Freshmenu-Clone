@@ -19,7 +19,7 @@ router.post("/api/register", async (req, res) => {
 
 	const password = await bcrypt.hash(plaintextpassword, 10);
 	try {
-		const user = User.create({
+		const user = await User.create({
 			name,
 			username,
 			email,
@@ -35,7 +35,7 @@ router.post("/api/register", async (req, res) => {
 			user : user
 		});
 
-		return res.status(200).send({ user, status: "ok" });
+		return res.status(200).send(user);
 	} catch (error) {
 		return res.json({ status: "error" });
 	}
