@@ -6,8 +6,10 @@ app.use('/', express.static(path.join(__dirname, 'static')))
 app.use(express.json());
 
 const userController = require('./controllers/user.controller')
+const productController = require('./controllers/product.controller')
 
 app.use("", userController)
+app.use("/products", productController)
 
 
 app.listen(8888, async () => {
