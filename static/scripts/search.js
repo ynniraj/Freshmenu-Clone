@@ -28,11 +28,12 @@ async function foodSearch() {
         searchBox = document.querySelector("#searchBox").value;
 
         let res = await fetch(
-            `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchBox}`
+            `http://localhost:8888/category/${searchBox}`
         );
         let data = await res.json();
-        let meals = data.meals;
-        if (meals == null) {
+        let main = data[0].product_id
+
+        if (main == null) {
             document.querySelector(".searchFoodResults").style.display = "none";
             document.querySelector(".error").style.display = "block"
             document.querySelector(".error").style = `display: flex;
@@ -44,9 +45,9 @@ async function foodSearch() {
         } else {
             document.querySelector(".error").style.display = "none"
         }
-        appendData(meals);
+        appendData(main);
 
-        console.log(meals);
+        console.log(data);
     } catch (err) {
         console.log("er:", err);
     }
@@ -60,7 +61,7 @@ function appendData(meals) {
         return false;
     }
 
-    meals.forEach(({ strMeal, strMealThumb }) => {
+    meals.forEach(({ strMeal, strMealThumb, price }) => {
         let div = document.createElement("div");
         div.setAttribute("class", "productDiv")
 
@@ -72,8 +73,8 @@ function appendData(meals) {
 
         let div2 = document.createElement("div");
 
-        let price = document.createElement("p");
-        price.innerHTML = "₹ 249";
+        let prices = document.createElement("p");
+        prices.innerHTML = "₹ " + price;
         let btn = document.createElement("button");
         btn.setAttribute("id", "cartBtn");
         btn.addEventListener("click", function () {
@@ -82,7 +83,7 @@ function appendData(meals) {
         btn.innerHTML = "ADD <sup>+</sup>"
 
 
-        div2.append(price, btn)
+        div2.append(prices, btn)
         div.append(img, p, div2);
         searchResult.append(div);
     });
@@ -132,7 +133,7 @@ function sideCart({ strMeal, strMealThumb, price }) {
     let cartData = {
         strMeal,
         strMealThumb,
-        price: 249
+        price
     }
     cart.push(cartData)
     localStorage.setItem("CartData", JSON.stringify(cart));
@@ -302,11 +303,12 @@ async function continental() {
 
 
         let res = await fetch(
-            `https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian`
+            `http://localhost:8888/category/indian`
 
         );
         let Contdata = await res.json();
-        let meals = Contdata.meals;
+
+        let meals = Contdata[0].product_id;
 
         appendConti(meals);
 
@@ -329,7 +331,7 @@ function appendConti(meals) {
         return false;
     }
 
-    meals.forEach(({ strMeal, strMealThumb }) => {
+    meals.forEach(({ strMeal, strMealThumb, price }) => {
         let div = document.createElement("div");
         div.setAttribute("class", "productDiv")
 
@@ -341,8 +343,8 @@ function appendConti(meals) {
 
         let div2 = document.createElement("div");
 
-        let price = document.createElement("p");
-        price.innerHTML = "₹ 249";
+        let prices = document.createElement("p");
+        prices.innerHTML = "₹ " + price;
         let btn = document.createElement("button");
         btn.setAttribute("id", "cartBtn");
         btn.addEventListener("click", function () {
@@ -351,7 +353,7 @@ function appendConti(meals) {
         btn.innerHTML = "ADD <sup>+</sup>"
 
 
-        div2.append(price, btn)
+        div2.append(prices, btn)
         div.append(img, p, div2);
         searchResult2.append(div);
     });

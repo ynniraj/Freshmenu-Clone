@@ -292,6 +292,7 @@ img {
   display: flex;
   width: 90%;
   margin: auto;
+  height: 600px;
 }
 
 #category_list div {

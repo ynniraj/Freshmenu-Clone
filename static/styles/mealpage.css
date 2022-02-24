@@ -123,12 +123,12 @@ body {
   width: 90%;
   display: flex;
   margin: 20px auto;
+  margin-top: 70px;
 }
 
 #container2 {
   height: 430px;
   width: 100%;
-  margin-top: 100px;
 }
 
 #container3 {

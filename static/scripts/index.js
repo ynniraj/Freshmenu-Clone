@@ -42,69 +42,94 @@ async function categoryData() {
         //let response_2 = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=burger`);   //Filter by Category
         //Search meal by name
 
-        let response_buyOne = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=Indian`);    //Filter by Area
+        let response_buyOne = await fetch(`http://localhost:8888/category/indian`);    //Filter by Area
 
-        let response_rice = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=rice`);
-        let response_noodles = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=noodle`);
-        let response_pasta = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=pasta`);
-        let response_biriyani = await fetch(`http://localhost:8888/category/rice`);
-        let response_salad = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=salad`);
-        let response_keto = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken`);
-        let response_burger = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=burger`);
-
-
-        let response_breakfast = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=breakfast`);
-        let response_snacks = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=Chinese`);
+        let response_rice = await fetch(`http://localhost:8888/category/rice`);
+        let response_noodles = await fetch(`http://localhost:8888/category/noodle`);
+        let response_pasta = await fetch(`http://localhost:8888/category/pasta`);
+        let response_biriyani = await fetch(`http://localhost:8888/category/biryani`);
+        let response_salad = await fetch(`http://localhost:8888/category/salad`);
+        let response_keto = await fetch(`http://localhost:8888/category/chicken`);
+        let response_burger = await fetch(`http://localhost:8888/category/burger`);
 
 
-        let response_sandwitches = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=bread`);
-        let response_sides = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=starter`);;
-        let response_desserts = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=dessert`);
+        let response_breakfast = await fetch(`http://localhost:8888/category/breakfast`);
+        let response_snacks = await fetch(`http://localhost:8888/category/starter`);
+
+
+        let response_sandwitches = await fetch(`http://localhost:8888/category/sandwich`);
+        let response_sides = await fetch(`http://localhost:8888/category/soup`);;
+        let response_desserts = await fetch(`http://localhost:8888/category/dessert`);
 
 
         let data_buyOne = await response_buyOne.json();
+        var buy = data_buyOne[0].product_id
+
+
         let data_rice = await response_rice.json();
+        let rices = data_rice[0].product_id
+
         let data_noodle = await response_noodles.json();
+        let noodle = data_noodle[0].product_id
+
         let data_pasta = await response_pasta.json();
+        let pasta = data_pasta[0].product_id
+
         let data_biriyani = await response_biriyani.json();
-        let main = data_biriyani[0].product_id
+        let biriyani = data_biriyani[0].product_id
+
         let data_fit = await response_salad.json();
+        let fit = data_fit[0].product_id
+
         let data_keto = await response_keto.json();
+        let keto = data_keto[0].product_id
+
         let data_burger = await response_burger.json();
+        let burger = data_burger[0].product_id
+
         let data_breakfast = await response_breakfast.json();
+        let breakfast = data_breakfast[0].product_id
+
         let data_snacks = await response_snacks.json();
+        let snacks = data_snacks[0].product_id
+
         let data_sandwitches = await response_sandwitches.json();
+        let sandwitches = data_sandwitches[0].product_id
+
         let data_sides = await response_sides.json();
+        let sides = data_sides[0].product_id
+
         let data_desserts = await response_desserts.json();
-
-        console.log("data_buyOne", data_buyOne);
-        console.log("data_rice", data_rice);
-        console.log("data_noodle", data_noodle);
-        console.log("data_pasta", data_pasta);
-        console.log("data_biriyani", main);
-        console.log("data_fit", data_fit);
-        console.log("data_keto", data_keto);
-        console.log("data_burger", data_burger);
-        console.log("data_breakfast", data_breakfast);
-        console.log("data_snacks", data_snacks);
-        console.log("data_sandwitches", data_sandwitches);
-        console.log("data_sides", data_sides);
-        console.log("data_desserts", data_desserts);
+        let desserts = data_desserts[0].product_id
 
 
-        appendBuyone(data_buyOne);
-        appendRice(data_rice);
-        appendNoodle(data_noodle);
-        appendPasta(data_pasta);
-        appendBiriyani(main);
-        appendFit(data_fit);
-        appendKeto(data_keto);
-        appendBurger(data_burger);
-        appendBreakfast(data_breakfast);
-        appendSnacks(data_snacks);
-        appendSandwitches(data_sandwitches);
-        appendSides(data_sides);
-        appendDesserts(data_desserts);
+        console.log("data_buyOne", buy);
+        console.log("data_rice", rice);
+        console.log("data_noodle", noodle);
+        console.log("data_pasta", pasta);
+        console.log("data_biriyani", biriyani);
+        console.log("data_fit", fit);
+        console.log("data_keto", keto);
+        console.log("data_burger", burger);
+        console.log("data_breakfast", breakfast);
+        console.log("data_snacks", snacks);
+        console.log("data_sandwitches", sandwitches);
+        console.log("data_sides", sides);
+        console.log("data_desserts", desserts);
+
+        appendBuyone(buy);
+        appendRice(rices);
+        appendNoodle(noodle);
+        appendPasta(pasta);
+        appendBiriyani(biriyani);
+        appendFit(fit);
+        appendKeto(keto);
+        appendBurger(burger);
+        appendBreakfast(breakfast);
+        appendSnacks(snacks);
+        appendSandwitches(sandwitches);
+        appendSides(sides);
+        appendDesserts(desserts);
     }
     catch (error) {
         console.log("error", error);
@@ -116,255 +141,9 @@ categoryData();
 
 let buyOne = document.getElementById('buyOne');
 
-const appendBuyone = (data_1) => {
+function appendBuyone(buy) {
 
-    let { meals } = data_1;
-
-    meals.forEach((elem) => {
-
-        let { strMeal } = elem;
-        let { strMealThumb } = elem;
-
-        let main_div = document.createElement('div');
-        main_div.setAttribute('id', "maindiv");
-
-        let img = document.createElement('img');
-        img.setAttribute("id", "main_div_img");
-
-        let sub_div1 = document.createElement('div');
-        sub_div1.setAttribute("id", "sub_div1");
-
-        let sub_div2 = document.createElement('div');
-        sub_div2.setAttribute("id", "sub_div2");
-
-        let sub_div2_div1 = document.createElement('div');
-        sub_div2_div1.setAttribute("id", "sub_div2_div1");
-
-        let sub_div2_div2 = document.createElement('div');
-        sub_div2_div2.setAttribute("id", "sub_div2_div2");
-
-
-        img.src = strMealThumb;
-        sub_div1.innerHTML = strMeal;
-
-        sub_div2_div1.innerHTML = "₹" + " " + 249;
-
-        sub_div2_div2.innerHTML = "Add";
-        sub_div2_div2.addEventListener("click", function () {
-            sideCart(({ strMeal, strMealThumb }))
-        });
-
-        main_div.append(img, sub_div1, sub_div2);
-
-        sub_div2.append(sub_div2_div1, sub_div2_div2);
-
-        buyOne.append(main_div);
-
-        img.addEventListener("click", () => {
-
-            let { idMeal } = elem;
-            //strMealId = JSON.stringify(strMealId);
-
-            localStorage.setItem("mealId", idMeal);
-
-            window.location.href = "mealpage.html";
-
-        });
-
-    });
-
-}
-
-let rice = document.getElementById('rice');
-
-const appendRice = (data_1) => {
-
-    let { meals } = data_1;
-
-    let i = 100;
-
-    meals.forEach((elem) => {
-
-        let { strMeal } = elem;
-        let { strMealThumb } = elem;
-
-        let main_div = document.createElement('div');
-        main_div.setAttribute('id', "maindiv");
-
-        let img = document.createElement('img');
-        img.setAttribute("id", "main_div_img");
-
-        let sub_div1 = document.createElement('div');
-        sub_div1.setAttribute("id", "sub_div1");
-
-        let sub_div2 = document.createElement('div');
-        sub_div2.setAttribute("id", "sub_div2");
-
-        let sub_div2_div1 = document.createElement('div');
-        sub_div2_div1.setAttribute("id", "sub_div2_div1");
-
-        let sub_div2_div2 = document.createElement('div');
-        sub_div2_div2.setAttribute("id", "sub_div2_div2");
-
-
-        img.src = strMealThumb;
-        sub_div1.innerHTML = strMeal;
-
-        sub_div2_div1.innerHTML = "₹" + " " + i;
-        i = i + 60;
-        sub_div2_div2.innerHTML = "Add";
-        sub_div2_div2.addEventListener("click", function () {
-            sideCart(({ strMeal, strMealThumb }))
-        });
-
-        main_div.append(img, sub_div1, sub_div2);
-
-        sub_div2.append(sub_div2_div1, sub_div2_div2);
-
-        rice.append(main_div);
-
-        img.addEventListener("click", () => {
-
-            let { idMeal } = elem;
-            //strMealId = JSON.stringify(strMealId);
-
-            localStorage.setItem("mealId", idMeal);
-
-            window.location.href = "mealpage.html";
-
-        });
-    });
-}
-
-let noodle = document.getElementById('noodle');
-
-const appendNoodle = (data_1) => {
-
-    let { meals } = data_1;
-
-    let i = 90;
-
-    meals.forEach((elem) => {
-
-        let { strMeal } = elem;
-        let { strMealThumb } = elem;
-
-        let main_div = document.createElement('div');
-        main_div.setAttribute('id', "maindiv");
-
-        let img = document.createElement('img');
-        img.setAttribute("id", "main_div_img");
-
-        let sub_div1 = document.createElement('div');
-        sub_div1.setAttribute("id", "sub_div1");
-
-        let sub_div2 = document.createElement('div');
-        sub_div2.setAttribute("id", "sub_div2");
-
-        let sub_div2_div1 = document.createElement('div');
-        sub_div2_div1.setAttribute("id", "sub_div2_div1");
-
-        let sub_div2_div2 = document.createElement('div');
-        sub_div2_div2.setAttribute("id", "sub_div2_div2");
-
-
-        img.src = strMealThumb;
-        sub_div1.innerHTML = strMeal;
-
-        sub_div2_div1.innerHTML = "₹" + " " + i;
-        i = i + 50;
-        sub_div2_div2.innerHTML = "Add";
-        sub_div2_div2.addEventListener("click", function () {
-            sideCart(({ strMeal, strMealThumb }))
-        });
-
-        main_div.append(img, sub_div1, sub_div2);
-
-        sub_div2.append(sub_div2_div1, sub_div2_div2);
-
-        noodle.append(main_div);
-
-        img.addEventListener("click", () => {
-
-            let { idMeal } = elem;
-            //strMealId = JSON.stringify(strMealId);
-
-            localStorage.setItem("mealId", idMeal);
-
-            window.location.href = "mealpage.html";
-
-        });
-
-    });
-
-
-}
-let pasta = document.getElementById('pasta');
-
-const appendPasta = (data_1) => {
-
-    let { meals } = data_1;
-
-    let i = 90;
-
-    meals.forEach((elem) => {
-
-        let { strMeal } = elem;
-        let { strMealThumb } = elem;
-
-        let main_div = document.createElement('div');
-        main_div.setAttribute('id', "maindiv");
-
-        let img = document.createElement('img');
-        img.setAttribute("id", "main_div_img");
-
-        let sub_div1 = document.createElement('div');
-        sub_div1.setAttribute("id", "sub_div1");
-
-        let sub_div2 = document.createElement('div');
-        sub_div2.setAttribute("id", "sub_div2");
-
-        let sub_div2_div1 = document.createElement('div');
-        sub_div2_div1.setAttribute("id", "sub_div2_div1");
-
-        let sub_div2_div2 = document.createElement('div');
-        sub_div2_div2.setAttribute("id", "sub_div2_div2");
-
-
-        img.src = strMealThumb;
-        sub_div1.innerHTML = strMeal;
-
-        sub_div2_div1.innerHTML = "₹" + " " + i;
-        i = i + 50;
-        sub_div2_div2.innerHTML = "Add";
-        sub_div2_div2.addEventListener("click", function () {
-            sideCart(({ strMeal, strMealThumb }))
-        });
-
-        main_div.append(img, sub_div1, sub_div2);
-
-        sub_div2.append(sub_div2_div1, sub_div2_div2);
-
-        pasta.append(main_div);
-
-        img.addEventListener("click", () => {
-
-            let { idMeal } = elem;
-
-            localStorage.setItem("mealId", idMeal);
-
-            window.location.href = "mealpage.html";
-
-        });
-
-    });
-}
-
-let biriyani = document.getElementById('biriyani');
-
-function appendBiriyani(main) {
-
-    main.forEach(({ strMeal, strMealThumb, price, idMeal }) => {
+    buy.forEach(({ strMeal, strMealThumb, price, _id }) => {
 
         let main_div = document.createElement('div');
         main_div.setAttribute('id', "maindiv");
@@ -391,19 +170,19 @@ function appendBiriyani(main) {
         sub_div2_div1.innerHTML = "₹" + " " + price;
         sub_div2_div2.innerHTML = "Add";
         sub_div2_div2.addEventListener("click", function () {
-            sideCart(({ strMeal, strMealThumb }))
+            sideCart(({ strMeal, strMealThumb, price }))
         });
         main_div.append(img, sub_div1, sub_div2);
 
         sub_div2.append(sub_div2_div1, sub_div2_div2);
 
-        biriyani.append(main_div);
+        buyOne.append(main_div);
 
         img.addEventListener("click", () => {
 
             //strMealId = JSON.stringify(strMealId);
 
-            localStorage.setItem("mealId", idMeal);
+            localStorage.setItem("mealId", _id);
 
             window.location.href = "mealpage.html";
 
@@ -414,18 +193,10 @@ function appendBiriyani(main) {
 
 }
 
-let fit = document.getElementById('fit');
+let rice = document.getElementById('rice');
+function appendRice(rices) {
 
-const appendFit = (data_1) => {
-
-    let { meals } = data_1;
-
-    let i = 90;
-
-    meals.forEach((elem) => {
-
-        let { strMeal } = elem;
-        let { strMealThumb } = elem;
+    rices.forEach(({ strMeal, strMealThumb, price, _id }) => {
 
         let main_div = document.createElement('div');
         main_div.setAttribute('id', "maindiv");
@@ -449,24 +220,22 @@ const appendFit = (data_1) => {
         img.src = strMealThumb;
         sub_div1.innerHTML = strMeal;
 
-        sub_div2_div1.innerHTML = "₹" + " " + i;
-        i = i + 50;
+        sub_div2_div1.innerHTML = "₹" + " " + price;
         sub_div2_div2.innerHTML = "Add";
         sub_div2_div2.addEventListener("click", function () {
-            sideCart(({ strMeal, strMealThumb }))
+            sideCart(({ strMeal, strMealThumb, price }))
         });
-
         main_div.append(img, sub_div1, sub_div2);
 
         sub_div2.append(sub_div2_div1, sub_div2_div2);
 
-        fit.append(main_div);
+        rice.append(main_div);
 
         img.addEventListener("click", () => {
 
-            let { idMeal } = elem;
+            //strMealId = JSON.stringify(strMealId);
 
-            localStorage.setItem("mealId", idMeal);
+            localStorage.setItem("mealId", _id);
 
             window.location.href = "mealpage.html";
 
@@ -477,18 +246,10 @@ const appendFit = (data_1) => {
 
 }
 
-let keto = document.getElementById('keto');
+let noodles = document.getElementById('noodle');
+function appendNoodle(noodle) {
 
-const appendKeto = (data_1) => {
-
-    let { meals } = data_1;
-
-    let i = 90;
-
-    meals.forEach((elem) => {
-
-        let { strMeal } = elem;
-        let { strMealThumb } = elem;
+    noodle.forEach(({ strMeal, strMealThumb, price, _id }) => {
 
         let main_div = document.createElement('div');
         main_div.setAttribute('id', "maindiv");
@@ -512,24 +273,22 @@ const appendKeto = (data_1) => {
         img.src = strMealThumb;
         sub_div1.innerHTML = strMeal;
 
-        sub_div2_div1.innerHTML = "₹" + " " + i;
-        i = i + 50;
+        sub_div2_div1.innerHTML = "₹" + " " + price;
         sub_div2_div2.innerHTML = "Add";
         sub_div2_div2.addEventListener("click", function () {
-            sideCart(({ strMeal, strMealThumb }))
+            sideCart(({ strMeal, strMealThumb, price }))
         });
-
         main_div.append(img, sub_div1, sub_div2);
 
         sub_div2.append(sub_div2_div1, sub_div2_div2);
 
-        keto.append(main_div);
+        noodles.append(main_div);
 
         img.addEventListener("click", () => {
 
-            let { idMeal } = elem;
+            //strMealId = JSON.stringify(strMealId);
 
-            localStorage.setItem("mealId", idMeal);
+            localStorage.setItem("mealId", _id);
 
             window.location.href = "mealpage.html";
 
@@ -539,19 +298,10 @@ const appendKeto = (data_1) => {
 
 
 }
+let pastas = document.getElementById('pasta');
+function appendPasta(pasta) {
 
-let burger = document.getElementById('burger');
-
-const appendBurger = (data_1) => {
-
-    let { meals } = data_1;
-
-    let i = 90;
-
-    meals.forEach((elem) => {
-
-        let { strMeal } = elem;
-        let { strMealThumb } = elem;
+    pasta.forEach(({ strMeal, strMealThumb, price, _id }) => {
 
         let main_div = document.createElement('div');
         main_div.setAttribute('id', "maindiv");
@@ -575,24 +325,22 @@ const appendBurger = (data_1) => {
         img.src = strMealThumb;
         sub_div1.innerHTML = strMeal;
 
-        sub_div2_div1.innerHTML = "₹" + " " + i;
-        i = i + 50;
+        sub_div2_div1.innerHTML = "₹" + " " + price;
         sub_div2_div2.innerHTML = "Add";
         sub_div2_div2.addEventListener("click", function () {
-            sideCart(({ strMeal, strMealThumb }))
+            sideCart(({ strMeal, strMealThumb, price }))
         });
-
         main_div.append(img, sub_div1, sub_div2);
 
         sub_div2.append(sub_div2_div1, sub_div2_div2);
 
-        burger.append(main_div);
+        pastas.append(main_div);
 
         img.addEventListener("click", () => {
 
-            let { idMeal } = elem;
+            //strMealId = JSON.stringify(strMealId);
 
-            localStorage.setItem("mealId", idMeal);
+            localStorage.setItem("mealId", _id);
 
             window.location.href = "mealpage.html";
 
@@ -602,19 +350,10 @@ const appendBurger = (data_1) => {
 
 
 }
+let biriyanis = document.getElementById('biriyani');
+function appendBiriyani(biriyani) {
 
-let breakfast = document.getElementById('breakfast');
-
-const appendBreakfast = (data_1) => {
-
-    let { meals } = data_1;
-
-    let i = 90;
-
-    meals.forEach((elem) => {
-
-        let { strMeal } = elem;
-        let { strMealThumb } = elem;
+    biriyani.forEach(({ strMeal, strMealThumb, price, _id }) => {
 
         let main_div = document.createElement('div');
         main_div.setAttribute('id', "maindiv");
@@ -638,24 +377,22 @@ const appendBreakfast = (data_1) => {
         img.src = strMealThumb;
         sub_div1.innerHTML = strMeal;
 
-        sub_div2_div1.innerHTML = "₹" + " " + i;
-        i = i + 50;
+        sub_div2_div1.innerHTML = "₹" + " " + price;
         sub_div2_div2.innerHTML = "Add";
         sub_div2_div2.addEventListener("click", function () {
-            sideCart(({ strMeal, strMealThumb }))
+            sideCart(({ strMeal, strMealThumb, price }))
         });
-
         main_div.append(img, sub_div1, sub_div2);
 
         sub_div2.append(sub_div2_div1, sub_div2_div2);
 
-        breakfast.append(main_div);
+        biriyanis.append(main_div);
 
         img.addEventListener("click", () => {
 
-            let { idMeal } = elem;
+            //strMealId = JSON.stringify(strMealId);
 
-            localStorage.setItem("mealId", idMeal);
+            localStorage.setItem("mealId", _id);
 
             window.location.href = "mealpage.html";
 
@@ -665,18 +402,10 @@ const appendBreakfast = (data_1) => {
 
 
 }
-let snacks = document.getElementById('accompaniments');
+let fits = document.getElementById('fit');
+function appendFit(fit) {
 
-const appendSnacks = (data_1) => {
-
-    let { meals } = data_1;
-
-    let i = 90;
-
-    meals.forEach((elem) => {
-
-        let { strMeal } = elem;
-        let { strMealThumb } = elem;
+    fit.forEach(({ strMeal, strMealThumb, price, _id }) => {
 
         let main_div = document.createElement('div');
         main_div.setAttribute('id', "maindiv");
@@ -700,24 +429,22 @@ const appendSnacks = (data_1) => {
         img.src = strMealThumb;
         sub_div1.innerHTML = strMeal;
 
-        sub_div2_div1.innerHTML = "₹" + " " + i;
-        i = i + 50;
+        sub_div2_div1.innerHTML = "₹" + " " + price;
         sub_div2_div2.innerHTML = "Add";
         sub_div2_div2.addEventListener("click", function () {
-            sideCart(({ strMeal, strMealThumb }))
+            sideCart(({ strMeal, strMealThumb, price }))
         });
-
         main_div.append(img, sub_div1, sub_div2);
 
         sub_div2.append(sub_div2_div1, sub_div2_div2);
 
-        snacks.append(main_div);
+        fits.append(main_div);
 
         img.addEventListener("click", () => {
 
-            let { idMeal } = elem;
+            //strMealId = JSON.stringify(strMealId);
 
-            localStorage.setItem("mealId", idMeal);
+            localStorage.setItem("mealId", _id);
 
             window.location.href = "mealpage.html";
 
@@ -727,18 +454,11 @@ const appendSnacks = (data_1) => {
 
 
 }
-let sandwitches = document.getElementById('sandwitches');
 
-const appendSandwitches = (data_1) => {
+let ketos = document.getElementById('keto');
+function appendKeto(keto) {
 
-    let { meals } = data_1;
-
-    let i = 90;
-
-    meals.forEach((elem) => {
-
-        let { strMeal } = elem;
-        let { strMealThumb } = elem;
+    keto.forEach(({ strMeal, strMealThumb, price, _id }) => {
 
         let main_div = document.createElement('div');
         main_div.setAttribute('id', "maindiv");
@@ -762,24 +482,22 @@ const appendSandwitches = (data_1) => {
         img.src = strMealThumb;
         sub_div1.innerHTML = strMeal;
 
-        sub_div2_div1.innerHTML = "₹" + " " + i;
-        i = i + 50;
+        sub_div2_div1.innerHTML = "₹" + " " + price;
         sub_div2_div2.innerHTML = "Add";
         sub_div2_div2.addEventListener("click", function () {
-            sideCart(({ strMeal, strMealThumb }))
+            sideCart(({ strMeal, strMealThumb, price }))
         });
-
         main_div.append(img, sub_div1, sub_div2);
 
         sub_div2.append(sub_div2_div1, sub_div2_div2);
 
-        sandwitches.append(main_div);
+        ketos.append(main_div);
 
         img.addEventListener("click", () => {
 
-            let { idMeal } = elem;
+            //strMealId = JSON.stringify(strMealId);
 
-            localStorage.setItem("mealId", idMeal);
+            localStorage.setItem("mealId", _id);
 
             window.location.href = "mealpage.html";
 
@@ -789,18 +507,11 @@ const appendSandwitches = (data_1) => {
 
 
 }
-let sides = document.getElementById('sides');
 
-const appendSides = (data_1) => {
+let burgers = document.getElementById('burger');
+function appendBurger(burger) {
 
-    let { meals } = data_1;
-
-    let i = 90;
-
-    meals.forEach((elem) => {
-
-        let { strMeal } = elem;
-        let { strMealThumb } = elem;
+    burger.forEach(({ strMeal, strMealThumb, price, _id }) => {
 
         let main_div = document.createElement('div');
         main_div.setAttribute('id', "maindiv");
@@ -824,23 +535,22 @@ const appendSides = (data_1) => {
         img.src = strMealThumb;
         sub_div1.innerHTML = strMeal;
 
-        sub_div2_div1.innerHTML = "₹" + " " + i;
-        i = i + 50;
+        sub_div2_div1.innerHTML = "₹" + " " + price;
         sub_div2_div2.innerHTML = "Add";
         sub_div2_div2.addEventListener("click", function () {
-            sideCart(({ strMeal, strMealThumb }))
+            sideCart(({ strMeal, strMealThumb, price }))
         });
         main_div.append(img, sub_div1, sub_div2);
 
         sub_div2.append(sub_div2_div1, sub_div2_div2);
 
-        sides.append(main_div);
+        burgers.append(main_div);
 
         img.addEventListener("click", () => {
 
-            let { idMeal } = elem;
+            //strMealId = JSON.stringify(strMealId);
 
-            localStorage.setItem("mealId", idMeal);
+            localStorage.setItem("mealId", _id);
 
             window.location.href = "mealpage.html";
 
@@ -850,18 +560,11 @@ const appendSides = (data_1) => {
 
 
 }
-let desserts = document.getElementById('desserts');
 
-const appendDesserts = (data_1) => {
+let breakfasts = document.getElementById('breakfast');
+function appendBreakfast(breakfast) {
 
-    let { meals } = data_1;
-
-    let i = 90;
-
-    meals.forEach((elem) => {
-
-        let { strMeal } = elem;
-        let { strMealThumb } = elem;
+    breakfast.forEach(({ strMeal, strMealThumb, price, _id }) => {
 
         let main_div = document.createElement('div');
         main_div.setAttribute('id', "maindiv");
@@ -885,23 +588,238 @@ const appendDesserts = (data_1) => {
         img.src = strMealThumb;
         sub_div1.innerHTML = strMeal;
 
-        sub_div2_div1.innerHTML = "₹" + " " + i;
-        i = i + 50;
+        sub_div2_div1.innerHTML = "₹" + " " + price;
         sub_div2_div2.innerHTML = "Add";
         sub_div2_div2.addEventListener("click", function () {
-            sideCart(({ strMeal, strMealThumb }))
+            sideCart(({ strMeal, strMealThumb, price }))
         });
         main_div.append(img, sub_div1, sub_div2);
 
         sub_div2.append(sub_div2_div1, sub_div2_div2);
 
-        desserts.append(main_div);
+        breakfasts.append(main_div);
 
         img.addEventListener("click", () => {
 
-            let { idMeal } = elem;
+            //strMealId = JSON.stringify(strMealId);
 
-            localStorage.setItem("mealId", idMeal);
+            localStorage.setItem("mealId", _id);
+
+            window.location.href = "mealpage.html";
+
+        });
+
+    });
+
+
+}
+
+
+
+let accompanimentss = document.getElementById('accompaniments');
+
+function appendSnacks(snacks) {
+
+    snacks.forEach(({ strMeal, strMealThumb, price, _id }) => {
+
+        let main_div = document.createElement('div');
+        main_div.setAttribute('id', "maindiv");
+
+        let img = document.createElement('img');
+        img.setAttribute("id", "main_div_img");
+
+        let sub_div1 = document.createElement('div');
+        sub_div1.setAttribute("id", "sub_div1");
+
+        let sub_div2 = document.createElement('div');
+        sub_div2.setAttribute("id", "sub_div2");
+
+        let sub_div2_div1 = document.createElement('div');
+        sub_div2_div1.setAttribute("id", "sub_div2_div1");
+
+        let sub_div2_div2 = document.createElement('div');
+        sub_div2_div2.setAttribute("id", "sub_div2_div2");
+
+
+        img.src = strMealThumb;
+        sub_div1.innerHTML = strMeal;
+
+        sub_div2_div1.innerHTML = "₹" + " " + price;
+        sub_div2_div2.innerHTML = "Add";
+        sub_div2_div2.addEventListener("click", function () {
+            sideCart(({ strMeal, strMealThumb, price }))
+        });
+        main_div.append(img, sub_div1, sub_div2);
+
+        sub_div2.append(sub_div2_div1, sub_div2_div2);
+
+        accompanimentss.append(main_div);
+
+        img.addEventListener("click", () => {
+
+            //strMealId = JSON.stringify(strMealId);
+
+            localStorage.setItem("mealId", _id);
+
+            window.location.href = "mealpage.html";
+
+        });
+
+    });
+
+
+}
+
+
+
+let sandwitchess = document.getElementById('sandwitches');
+function appendSandwitches(sandwitches) {
+
+    sandwitches.forEach(({ strMeal, strMealThumb, price, _id }) => {
+
+        let main_div = document.createElement('div');
+        main_div.setAttribute('id', "maindiv");
+
+        let img = document.createElement('img');
+        img.setAttribute("id", "main_div_img");
+
+        let sub_div1 = document.createElement('div');
+        sub_div1.setAttribute("id", "sub_div1");
+
+        let sub_div2 = document.createElement('div');
+        sub_div2.setAttribute("id", "sub_div2");
+
+        let sub_div2_div1 = document.createElement('div');
+        sub_div2_div1.setAttribute("id", "sub_div2_div1");
+
+        let sub_div2_div2 = document.createElement('div');
+        sub_div2_div2.setAttribute("id", "sub_div2_div2");
+
+
+        img.src = strMealThumb;
+        sub_div1.innerHTML = strMeal;
+
+        sub_div2_div1.innerHTML = "₹" + " " + price;
+        sub_div2_div2.innerHTML = "Add";
+        sub_div2_div2.addEventListener("click", function () {
+            sideCart(({ strMeal, strMealThumb, price }))
+        });
+        main_div.append(img, sub_div1, sub_div2);
+
+        sub_div2.append(sub_div2_div1, sub_div2_div2);
+
+        sandwitchess.append(main_div);
+
+        img.addEventListener("click", () => {
+
+            //strMealId = JSON.stringify(strMealId);
+
+            localStorage.setItem("mealId", _id);
+
+            window.location.href = "mealpage.html";
+
+        });
+
+    });
+
+
+}
+
+let sidess = document.getElementById('sides');
+function appendSides(sides) {
+
+    sides.forEach(({ strMeal, strMealThumb, price, _id }) => {
+
+        let main_div = document.createElement('div');
+        main_div.setAttribute('id', "maindiv");
+
+        let img = document.createElement('img');
+        img.setAttribute("id", "main_div_img");
+
+        let sub_div1 = document.createElement('div');
+        sub_div1.setAttribute("id", "sub_div1");
+
+        let sub_div2 = document.createElement('div');
+        sub_div2.setAttribute("id", "sub_div2");
+
+        let sub_div2_div1 = document.createElement('div');
+        sub_div2_div1.setAttribute("id", "sub_div2_div1");
+
+        let sub_div2_div2 = document.createElement('div');
+        sub_div2_div2.setAttribute("id", "sub_div2_div2");
+
+
+        img.src = strMealThumb;
+        sub_div1.innerHTML = strMeal;
+
+        sub_div2_div1.innerHTML = "₹" + " " + price;
+        sub_div2_div2.innerHTML = "Add";
+        sub_div2_div2.addEventListener("click", function () {
+            sideCart(({ strMeal, strMealThumb, price }))
+        });
+        main_div.append(img, sub_div1, sub_div2);
+
+        sub_div2.append(sub_div2_div1, sub_div2_div2);
+
+        sidess.append(main_div);
+
+        img.addEventListener("click", () => {
+
+            //strMealId = JSON.stringify(strMealId);
+
+            localStorage.setItem("mealId", _id);
+
+            window.location.href = "mealpage.html";
+
+        });
+
+    });
+
+
+}
+let dessertss = document.getElementById('desserts');
+function appendDesserts(desserts) {
+
+    desserts.forEach(({ strMeal, strMealThumb, price, _id }) => {
+
+        let main_div = document.createElement('div');
+        main_div.setAttribute('id', "maindiv");
+
+        let img = document.createElement('img');
+        img.setAttribute("id", "main_div_img");
+
+        let sub_div1 = document.createElement('div');
+        sub_div1.setAttribute("id", "sub_div1");
+
+        let sub_div2 = document.createElement('div');
+        sub_div2.setAttribute("id", "sub_div2");
+
+        let sub_div2_div1 = document.createElement('div');
+        sub_div2_div1.setAttribute("id", "sub_div2_div1");
+
+        let sub_div2_div2 = document.createElement('div');
+        sub_div2_div2.setAttribute("id", "sub_div2_div2");
+
+
+        img.src = strMealThumb;
+        sub_div1.innerHTML = strMeal;
+
+        sub_div2_div1.innerHTML = "₹" + " " + price;
+        sub_div2_div2.innerHTML = "Add";
+        sub_div2_div2.addEventListener("click", function () {
+            sideCart(({ strMeal, strMealThumb, price }))
+        });
+        main_div.append(img, sub_div1, sub_div2);
+
+        sub_div2.append(sub_div2_div1, sub_div2_div2);
+
+        dessertss.append(main_div);
+
+        img.addEventListener("click", () => {
+
+            //strMealId = JSON.stringify(strMealId);
+
+            localStorage.setItem("mealId", _id);
 
             window.location.href = "mealpage.html";
 
@@ -917,7 +835,7 @@ const appendDesserts = (data_1) => {
 
 //cart pages
 var cart = JSON.parse(localStorage.getItem("CartData")) || []
-function sideCart({ strMeal, strMealThumb }) {
+function sideCart({ strMeal, strMealThumb, price }) {
     document.querySelector(".cartmain").style = `
     grid-template-areas: "c c c c c c c c c s s s ";
     `;
@@ -942,7 +860,7 @@ function sideCart({ strMeal, strMealThumb }) {
     let cartData = {
         strMeal,
         strMealThumb,
-        price: 249
+        price
     }
     cart.push(cartData)
     localStorage.setItem("CartData", JSON.stringify(cart));
@@ -1045,7 +963,7 @@ async function alsolike() {
 
 
         let res = await fetch(
-            " http://localhost:8888/category");
+            "http://localhost:8888/category");
         let data = await res.json();
         let meal = data[0].product_id;
         appendLike(meal)
@@ -1063,7 +981,7 @@ function appendLike(meals) {
         return false;
     }
 
-    meals.forEach(({ strMeal, strMealThumb }) => {
+    meals.forEach(({ strMeal, strMealThumb, price }) => {
         let div = document.createElement("div");
         div.setAttribute("class", "likeDiv")
 
@@ -1074,8 +992,8 @@ function appendLike(meals) {
 
         let div2 = document.createElement("div");
 
-        let price = document.createElement("p");
-        price.innerHTML = "₹ 249";
+        let prices = document.createElement("p");
+        prices.innerHTML = "₹" + price;
         let btn = document.createElement("button");
         btn.addEventListener("click", function () {
             sideCart(({ strMeal, strMealThumb, price }))
@@ -1144,3 +1062,56 @@ document.getElementById("homeimg").addEventListener("click", function () {
 document.getElementById("offers_div").addEventListener("click", function () {
     window.location.href = "offer.html"
 })
+
+document.getElementById("price_div").addEventListener("click", handlePriceSort)
+async function handlePriceSort() {
+    document.getElementById("buyOne").innerHTML = null
+    document.getElementById("rice").innerHTML = null
+    document.getElementById("noodle").innerHTML = null
+    document.getElementById("pasta").innerHTML = null
+    document.getElementById("biriyani").innerHTML = null
+    document.getElementById("fit").innerHTML = null
+    document.getElementById("keto").innerHTML = null
+    document.getElementById("burger").innerHTML = null
+    document.getElementById("breakfast").innerHTML = null
+    document.getElementById("accompaniments").innerHTML = null
+    document.getElementById("sandwitches").innerHTML = null
+    document.getElementById("sides").innerHTML = null
+    document.getElementById("desserts").innerHTML = null
+    try {
+        let high = await fetch(`http://localhost:8888/category/higher`);
+        let higher = await high.json();
+        var main = higher[0].product_id
+        var main1 = higher[1].product_id
+        var main2 = higher[2].product_id
+        var main3 = higher[3].product_id
+        var main4 = higher[4].product_id
+        var main5 = higher[5].product_id
+        var main6 = higher[6].product_id
+        var main7 = higher[7].product_id
+        var main8 = higher[8].product_id
+        var main9 = higher[9].product_id
+        var main10 = higher[10].product_id
+        var main11 = higher[11].product_id
+        var main12 = higher[12].product_id
+        
+        
+        appendBuyone(main);
+        appendRice(main1);
+        appendNoodle(main2);
+        appendPasta(main3);
+        appendBiriyani(main4);
+        appendFit(main5);
+        appendKeto(main6);
+        appendBurger(main7);
+        appendBreakfast(main8);
+        appendSnacks(main9);
+        appendSandwitches(main10);
+        appendSides(main11);
+        appendDesserts(main12);
+
+    }
+    catch (err) {
+        console.log(err)
+    }
+}
