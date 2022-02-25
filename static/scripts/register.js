@@ -24,7 +24,14 @@ async function chekcforblank(event) {
 
   if (result.status == "error") {
     alert(result.error);
-  }else{
+  } else {
     alert("Success")
+    window.location.href = "login.html";
   }
+}
+
+
+document.querySelector("#font2").addEventListener("click", googleauth);
+async function googleauth() {
+  window.location.href = ('http://localhost:8888/auth/google')
 }

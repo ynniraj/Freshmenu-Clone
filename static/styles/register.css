@@ -147,25 +147,14 @@ a {
   display: flex;
 }
 
-#font1 {
-  height: 30px;
-  width: 50%;
-}
-
 #font2 {
-  height: 30px;
-  width: 50%;
-  margin-left: 20px;
-}
-
-#imgf1 {
-  height: 29px;
-  width: 100%;
-  object-fit: cover;
+  width: 60%;
+  margin-left: 62px;
+  margin-top: 6px;
 }
 
 #imgf2 {
-  height: 30px;
+  height: auto;
   width: 100%;
   object-fit: cover;
 }
