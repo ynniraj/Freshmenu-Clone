@@ -61,7 +61,6 @@ async function chekcforblank(event) {
     }).then((res) => res.json());
 
     if (result.status === "ok") {
-        console.log(result.data);
         window.location.href = "index.html";
     }
     if (result.status === "error") {

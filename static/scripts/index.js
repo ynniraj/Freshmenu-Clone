@@ -891,7 +891,7 @@ function appendCart(cart) {
         let div2 = document.createElement("div");
 
         let price = document.createElement("p");
-        price.innerText = elem.price
+        price.innerText = "₹ " + elem.price
         let span = document.createElement("span");
 
         let btn1 = document.createElement("button")
@@ -993,7 +993,7 @@ function appendLike(meals) {
         let div2 = document.createElement("div");
 
         let prices = document.createElement("p");
-        prices.innerHTML = "₹" + price;
+        prices.innerHTML = "₹ " + price;
         let btn = document.createElement("button");
         btn.addEventListener("click", function () {
             sideCart(({ strMeal, strMealThumb, price }))
@@ -1001,7 +1001,7 @@ function appendLike(meals) {
         btn.innerHTML = "ADD <sup>+</sup>"
 
 
-        div2.append(p, price)
+        div2.append(p, prices)
         div.append(img, div2, btn);
         also.append(div);
     });

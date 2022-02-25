@@ -24,5 +24,7 @@ async function chekcforblank(event) {
 
   if (result.status == "error") {
     alert(result.error);
+  }else{
+    alert("Success")
   }
 }
