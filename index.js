@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const connect = require('./confiq/db')
 const app = express();
@@ -15,7 +16,7 @@ app.use("/category", cataController)
 
 
 
-app.listen(8888, async () => {
+app.listen(process.env.PORT || 8888, '0.0.0.0', async () => {
     await connect();
     console.log("listen on port 8888")
 })
