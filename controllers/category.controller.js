@@ -3,6 +3,14 @@ const cata = require('../models/category.model')
 const router = express.Router();
 
 
+router.get("/low", async (req, res) => {
+    try {
+        const catas = await cata.find().populate({ path: "product_id", select: ["strMeal", "strMealThumb", "idMeal", "price"], options: { sort: { price: 1 } } }).lean().exec()
+        return res.status(200).send(catas);
+    } catch (err) {
+        return res.status(500).send(err)
+    }
+})
 
 router.get("/higher", async (req, res) => {
     try {
@@ -12,6 +20,7 @@ router.get("/higher", async (req, res) => {
         return res.status(500).send(err)
     }
 })
+
 
 router.post("", async (req, res) => {
     try {
@@ -24,7 +33,7 @@ router.post("", async (req, res) => {
 })
 router.get("/:name", async (req, res) => {
     try {
-        const catas = await cata.find({ catName: req.params.name }).populate({ path: "product_id", select: ["strMeal", "strMealThumb", "idMeal", "price"], options: { sort: { price: 1 } } }).lean().exec()
+        const catas = await cata.find({ catName: req.params.name }).populate({ path: "product_id", select: ["strMeal", "strMealThumb", "idMeal", "price"] }).lean().exec()
         return res.status(200).send(catas);
     } catch (err) {
         return res.status(500).send(err)

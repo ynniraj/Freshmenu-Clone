@@ -1063,7 +1063,8 @@ document.getElementById("offers_div").addEventListener("click", function () {
     window.location.href = "offer.html"
 })
 
-document.getElementById("price_div").addEventListener("click", handlePriceSort)
+document.getElementById("high").addEventListener("click", handlePriceSort)
+
 async function handlePriceSort() {
     document.getElementById("buyOne").innerHTML = null
     document.getElementById("rice").innerHTML = null
@@ -1094,9 +1095,62 @@ async function handlePriceSort() {
         var main10 = higher[10].product_id
         var main11 = higher[11].product_id
         var main12 = higher[12].product_id
-        
-        
+
+
         appendBuyone(main);
+        appendRice(main1);
+        appendNoodle(main2);
+        appendPasta(main3);
+        appendBiriyani(main4);
+        appendFit(main5);
+        appendKeto(main6);
+        appendBurger(main7);
+        appendBreakfast(main8);
+        appendSnacks(main9);
+        appendSandwitches(main10);
+        appendSides(main11);
+        appendDesserts(main12);
+
+    }
+    catch (err) {
+        console.log(err)
+    }
+}
+document.getElementById("low").addEventListener("click", handlePriceSort1)
+
+async function handlePriceSort1() {
+    document.getElementById("buyOne").innerHTML = null
+    document.getElementById("rice").innerHTML = null
+    document.getElementById("noodle").innerHTML = null
+    document.getElementById("pasta").innerHTML = null
+    document.getElementById("biriyani").innerHTML = null
+    document.getElementById("fit").innerHTML = null
+    document.getElementById("keto").innerHTML = null
+    document.getElementById("burger").innerHTML = null
+    document.getElementById("breakfast").innerHTML = null
+    document.getElementById("accompaniments").innerHTML = null
+    document.getElementById("sandwitches").innerHTML = null
+    document.getElementById("sides").innerHTML = null
+    document.getElementById("desserts").innerHTML = null
+    try {
+        let high = await fetch(`http://localhost:8888/category/low`);
+        let higher = await high.json();
+        var first = higher[0].product_id
+        var main1 = higher[1].product_id
+        var main2 = higher[2].product_id
+        var main3 = higher[3].product_id
+        var main4 = higher[4].product_id
+        var main5 = higher[5].product_id
+        var main6 = higher[6].product_id
+        var main7 = higher[7].product_id
+        var main8 = higher[8].product_id
+        var main9 = higher[9].product_id
+        var main10 = higher[10].product_id
+        var main11 = higher[11].product_id
+        var main12 = higher[12].product_id
+        console.log(first, "low")
+
+        appendBuyone(first);
         appendRice(main1);
         appendNoodle(main2);
         appendPasta(main3);

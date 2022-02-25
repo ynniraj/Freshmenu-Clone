@@ -140,6 +140,21 @@
   z-index: 1;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+#price_div:hover .signmenu {
+  display: block;
+  cursor: pointer;
+  text-align: center;
+  position: absolute;
+  padding: 6px;
+  margin-top: 5px;
+  margin-left: 6px;
+  background-color: white;
+  color: white;
+  border-radius: 4px 0 4px 4px;
+  z-index: 1;
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px;
+}
+
 #cart_div {
   background-color: #f2f3f3;
   height: 109%;
@@ -270,6 +285,7 @@ img {
   padding-top: 5px;
   border: 1px solid dimgray;
   border-radius: 5px;
+  cursor: pointer;
 }
 #filter_div {
   margin-left: 2%;
