@@ -33,5 +33,5 @@ async function chekcforblank(event) {
 
 document.querySelector("#font2").addEventListener("click", googleauth);
 async function googleauth() {
-  window.location.href = ('http://localhost:8888/auth/google')
+  window.location.href = ('https://freshmenu-heroku.herokuapp.com/auth/google')
 }
