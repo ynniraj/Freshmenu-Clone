@@ -40,7 +40,7 @@ app.get(
     }),
     (req, res) => {
         const { user } = req;
-        return res.redirect("http://localhost:8888")
+        return res.redirect("https://freshmenu-heroku.herokuapp.com")
 
     }
 );
