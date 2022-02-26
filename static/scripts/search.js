@@ -164,7 +164,7 @@ function appendCart(cart) {
         let div2 = document.createElement("div");
 
         let price = document.createElement("p");
-        price.innerText = elem.price
+        price.innerText = "₹ " + elem.price
         let span = document.createElement("span");
 
         let btn1 = document.createElement("button")
