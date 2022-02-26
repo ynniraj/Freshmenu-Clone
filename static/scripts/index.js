@@ -1080,7 +1080,7 @@ async function handlePriceSort() {
     document.getElementById("sides").innerHTML = null
     document.getElementById("desserts").innerHTML = null
     try {
-        let high = await fetch(`http://localhost:8888/category/higher`);
+        let high = await fetch(`https://freshmenu-heroku.herokuapp.com/category/higher`);
         let higher = await high.json();
         var main = higher[0].product_id
         var main1 = higher[1].product_id
@@ -1133,7 +1133,7 @@ async function handlePriceSort1() {
     document.getElementById("sides").innerHTML = null
     document.getElementById("desserts").innerHTML = null
     try {
-        let high = await fetch(`http://localhost:8888/category/low`);
+        let high = await fetch(`https://freshmenu-heroku.herokuapp.com/category/low`);
         let higher = await high.json();
         var first = higher[0].product_id
         var main1 = higher[1].product_id
