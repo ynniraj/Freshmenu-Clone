@@ -23,8 +23,8 @@ const welcomeMail = async ({ from, to, user }) => {
 	await sendMail({
 		from,
 		to,
-		subject: `Welcome to ABC system ${user.name} ${user.name}`,
-		text: `Hi ${user.name}, Please confirm your email address`,
+		subject: `Welcome to FreshMenu ${user.name} ${user.name}`,
+		text: `Hi ${user.name}, Welcome to FresMenu`,
 	});
 };
 
