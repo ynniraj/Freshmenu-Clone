@@ -23,7 +23,7 @@ const welcomeMail = async ({ from, to, user }) => {
 	await sendMail({
 		from,
 		to,
-		subject: `Welcome to FreshMenu ${user.name} ${user.name}`,
+		subject: `Welcome to FreshMenu ${user.name}`,
 		text: `Hi ${user.name}, Welcome to FresMenu`,
 	});
 };
