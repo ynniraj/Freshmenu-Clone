@@ -42,24 +42,24 @@ async function categoryData() {
         //let response_2 = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=burger`);   //Filter by Category
         //Search meal by name
 
-        let response_buyOne = await fetch(`http://localhost:8888/category/indian`);    //Filter by Area
+        let response_buyOne = await fetch(`http://freshmenu-heroku.herokuapp.com/category/indian`);    //Filter by Area
 
-        let response_rice = await fetch(`http://localhost:8888/category/rice`);
-        let response_noodles = await fetch(`http://localhost:8888/category/noodle`);
-        let response_pasta = await fetch(`http://localhost:8888/category/pasta`);
-        let response_biriyani = await fetch(`http://localhost:8888/category/biryani`);
-        let response_salad = await fetch(`http://localhost:8888/category/salad`);
-        let response_keto = await fetch(`http://localhost:8888/category/chicken`);
-        let response_burger = await fetch(`http://localhost:8888/category/burger`);
-
-
-        let response_breakfast = await fetch(`http://localhost:8888/category/breakfast`);
-        let response_snacks = await fetch(`http://localhost:8888/category/starter`);
+        let response_rice = await fetch(`http://freshmenu-heroku.herokuapp.com/category/rice`);
+        let response_noodles = await fetch(`http://freshmenu-heroku.herokuapp.com/category/noodle`);
+        let response_pasta = await fetch(`http://freshmenu-heroku.herokuapp.com/category/pasta`);
+        let response_biriyani = await fetch(`http://freshmenu-heroku.herokuapp.com/category/biryani`);
+        let response_salad = await fetch(`http://freshmenu-heroku.herokuapp.com/category/salad`);
+        let response_keto = await fetch(`http://freshmenu-heroku.herokuapp.com/category/chicken`);
+        let response_burger = await fetch(`http://freshmenu-heroku.herokuapp.com/category/burger`);
 
 
-        let response_sandwitches = await fetch(`http://localhost:8888/category/sandwich`);
-        let response_sides = await fetch(`http://localhost:8888/category/soup`);;
-        let response_desserts = await fetch(`http://localhost:8888/category/dessert`);
+        let response_breakfast = await fetch(`http://freshmenu-heroku.herokuapp.com/category/breakfast`);
+        let response_snacks = await fetch(`http://freshmenu-heroku.herokuapp.com/category/starter`);
+
+
+        let response_sandwitches = await fetch(`http://freshmenu-heroku.herokuapp.com/category/sandwich`);
+        let response_sides = await fetch(`http://freshmenu-heroku.herokuapp.com/category/soup`);;
+        let response_desserts = await fetch(`http://freshmenu-heroku.herokuapp.com/category/dessert`);
 
 
         let data_buyOne = await response_buyOne.json();
