@@ -28,7 +28,7 @@ async function foodSearch() {
         searchBox = document.querySelector("#searchBox").value;
 
         let res = await fetch(
-            `http://localhost:8888/category/${searchBox}`
+            `https://freshmenu-heroku.herokuapp.com/category/${searchBox}`
         );
         let data = await res.json();
         let main = data[0].product_id
@@ -237,10 +237,10 @@ async function alsolike() {
         searchBox = document.querySelector("#searchBox").value;
 
         let res = await fetch(
-            `https://www.themealdb.com/api/json/v1/1/filter.php?a=American`
+            `https://freshmenu-heroku.herokuapp.com/category/dessert`
         );
         let data = await res.json();
-        let meal = data.meals;
+        let meal = data[0].product_id;
         appendLike(meal)
         console.log("also", meal);
     } catch (err) {
@@ -256,7 +256,7 @@ function appendLike(meals) {
         return false;
     }
 
-    meals.forEach(({ strMeal, strMealThumb }) => {
+    meals.forEach(({ strMeal, strMealThumb, price }) => {
         let div = document.createElement("div");
         div.setAttribute("class", "likeDiv")
 
@@ -267,8 +267,8 @@ function appendLike(meals) {
 
         let div2 = document.createElement("div");
 
-        let price = document.createElement("p");
-        price.innerHTML = "₹ 249";
+        let prices = document.createElement("p");
+        prices.innerHTML = "₹ " + price;
         let btn = document.createElement("button");
         btn.addEventListener("click", function () {
             sideCart(({ strMeal, strMealThumb, price }))
@@ -276,7 +276,7 @@ function appendLike(meals) {
         btn.innerHTML = "ADD <sup>+</sup>"
 
 
-        div2.append(p, price)
+        div2.append(p, prices)
         div.append(img, div2, btn);
         also.append(div);
     });
@@ -303,7 +303,7 @@ async function continental() {
 
 
         let res = await fetch(
-            `http://localhost:8888/category/indian`
+            `https://freshmenu-heroku.herokuapp.com/category/indian`
 
         );
         let Contdata = await res.json();

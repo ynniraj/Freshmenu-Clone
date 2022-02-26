@@ -8,7 +8,7 @@ async function details() {
     let mealId = localStorage.getItem("mealId");
 
 
-    let response = await fetch(`http://localhost:8888/products/${mealId}`);
+    let response = await fetch(`https://freshmenu-heroku.herokuapp.com/products/${mealId}`);
 
     var data = await response.json();
 
@@ -98,7 +98,7 @@ async function details() {
     // appendMeal(data);
 
 
-    let response_random = await fetch(`http://localhost:8888/category/salad`);
+    let response_random = await fetch(`https://freshmenu-heroku.herokuapp.com/category/salad`);
 
     let data_random = await response_random.json();
 
